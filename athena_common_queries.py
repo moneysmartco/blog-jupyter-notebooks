@@ -66,7 +66,7 @@ def create_partition_filter(from_datetime, to_datetime):
     
     return partition_constraints
 
-def create_generic_event_query(from_datetime, to_datetime, event_names = None, include_device_type_data=False):
+def create_generic_event_query(from_datetime, to_datetime, event_names = None, include_device_type_data=False, interpret_urls=True):
     """
     Leave country codes, and event_names as null if you don't want to filter
     
@@ -94,11 +94,16 @@ def create_generic_event_query(from_datetime, to_datetime, event_names = None, i
     , "type"
     , "body"."event_name"
     , "body"."data"."status"
-        , "user"."anonymous_id"
+    , "user"."anonymous_id"
     , "user"."amp_id"
-        , "context"."page_url"
+    , "context"."page_url"
     , "context"."referrer"
-    , CAST("strpos"("context"."page_url", '?amp') AS boolean) "is_amp"
+ 
+    """
+    
+    if interpret_urls:
+        query += """
+           , CAST("strpos"("context"."page_url", '?amp') AS boolean) "is_amp"
     , CAST("strpos"("context"."page_url", '://www-new.') AS boolean) OR CAST("strpos"("context"."page_url", '://www3.') AS boolean)  OR CAST("strpos"("context"."page_url", '://blog3.') AS boolean) as "is_test"
     , CAST("strpos"("context"."page_url", '://www.') AS boolean) OR CAST("strpos"("context"."page_url", '://blog.') AS boolean) "is_control"
     
@@ -124,7 +129,8 @@ def create_generic_event_query(from_datetime, to_datetime, event_names = None, i
     , "regexp_extract"("context"."page_url", '^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?', 4) LIKE '%get%' as is_unbounce
     , "regexp_extract"("context"."page_url", '^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?', 5) like '/embed/%' as is_embed
     
-    """
+        
+        """
     
     if include_device_type_data:
         query += """
