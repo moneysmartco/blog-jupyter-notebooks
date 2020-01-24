@@ -66,11 +66,13 @@ def create_partition_filter(from_datetime, to_datetime):
     
     return partition_constraints
 
-def create_generic_event_query(from_datetime, to_datetime, event_names = None, include_device_type_data=False, interpret_urls=True):
+def create_generic_event_query(from_datetime, to_datetime, event_names = None, include_device_type_data=False, include_user_agent = False, interpret_urls=True, include_ip_address = False):
     """
     Leave country codes, and event_names as null if you don't want to filter
     
     event_names must be exact matches
+    
+    Device type data includes the user agent as well.
     
     """
     #These are just used for the partition selection and further filter is done on the datetime level.
@@ -131,6 +133,10 @@ def create_generic_event_query(from_datetime, to_datetime, event_names = None, i
     
         
         """
+    if include_user_agent or include_device_type_data:
+        query += """
+        , context.user_agent as user_agent
+        """
     
     if include_device_type_data:
         query += """
@@ -138,11 +144,16 @@ def create_generic_event_query(from_datetime, to_datetime, event_names = None, i
         , context.browser.name as browser_name
         , context.browser.major as browser_major_version
         , context.browser.version as browser_version
-        
         , context.operating_system.name as operating_system_name
         , context.operating_system.version as operating_system_version
         , context.user_agent as user_agent
         """
+        
+    if include_ip_address:
+        query += """
+        , context.ip_address
+        """
+        
     query+="""
     
     FROM
