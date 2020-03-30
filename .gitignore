@@ -1,5 +1,8 @@
 creds.py
+<<<<<<< HEAD
+=======
 __pycache__
 .ipynb_checkpoints/
+>>>>>>> refs/remotes/origin/master
 *.gzip
 
