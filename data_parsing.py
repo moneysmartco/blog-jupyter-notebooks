@@ -37,7 +37,7 @@ def get_metadata_from_url(url, return_canonical_url = False, return_dim_pages_ur
             page_type = "blog_tag_page"
         elif "moneysmart.tw" in nl and slug_root not in ["/tag", "/articles"]: # e.g. https://www.moneysmart.tw/earn-money/%e7%90%86%e8%b2%a1%e8%a7%80%e5%bf%b5/ is a category (tag pages are fine)
             page_type = "blog_category_page"
-        elif ("moneysmart.sg" in nl or "moneysmart.hk" in nl) and slug in [slug, "/en" + slug, "zh-hk"+slug]: # e.g. blog.moneysmart.hk/en/mastercard is tag and category
+        elif ("moneysmart.sg" in nl or "moneysmart.hk" in nl) and slug in [slug_root, "/en" + slug_root, "/zh-hk"+slug_root]: # e.g. blog.moneysmart.hk/en/mastercard is tag and category
             page_type = "blog_category_tag_page"
         else:
             page_type = "blog_article"  #TODO: ideally would do article vs category vs home page
@@ -156,6 +156,8 @@ def run_tests():
     # TODO: should really do proper unit test... being lazy                                                                                                 
     test_urls = [
             ["blog_article" , "https://www.moneysmart.tw/articles/%e9%99%8d%e6%81%af-%e5%88%a9%e7%8e%87-%e8%81%af%e6%ba%96%e6%9c%83-%e5%a4%ae%e8%a1%8c/"],
+            ["blog_article", "https://blog3.moneysmart.sg/fixed-deposits/best-fixed-deposit-accounts-singapore/"],
+            ["blog_article","https://blog.moneysmart.sg/savings-accounts/dbs-multiplier-ocbc360-uob-one-covid-19"],
             ["blog_tag_page", "https://www.moneysmart.tw/tag/%e5%88%a9%e7%8e%87/"],
             ["blog_home_page", "https://www.moneysmart.tw/"],
             ["blog_home_page", "https://blog3.moneysmart.sg/"],
