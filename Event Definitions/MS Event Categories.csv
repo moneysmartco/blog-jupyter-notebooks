@@ -1,0 +1,535 @@
+For events definition screenshots ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,Event Name,Description,"Sample button
+/URL",Property Name,isMandated,Property Value Type,Property Description,Suggested values (Red colored values are fixed allowed values),Standardisation,DBS/POSB SG PL Full API,SCB SG CC Full API,SCB SG PL Full API,OCBC Bot Service,CI FWD ,CI Etiqa,CI Wizard,Home Loan - TDSR Calculator,Home Loan - Property Tax Calculator,Home Loan - Stamp Duty Calculator,Home Loan - Refinance Calculator,Home Loan - MSR Calculator,Home Loan - Mortgage Calculator,Home Loan - Progressive Payment Calculator,Home Loan - Property Valuation Calculator,Home Loan HK - Mortgage Calculator,Home Loan HK - Property Valuation Calculator,Mortgage Home Page,New Purchase Home Page,Refinance Home Page,"New Listing Service
+HK TI",Product Widgets
+,,,,,,,,,,,,,Link,,,,,,,,,,,,,,,,,,
+1,LeadGeneration.ClickConversion,"Tracks events that lead directly to a conversion.
+This should lead to direct business value Eg- 
+action, lead or conversion","- Apply Now
+- Buy Now
+- GoToSite
+- Learn More/Apply Now
+   in sponsored banner
+- EnquireNow
+- Submit",channel,TRUE,string,Product channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",Listing and details page,,,,,,,/car-insurance,,,,,,,,,,,,,,travel-insurance,"credit-cards,personal-loan,travel-insurance"
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page,lps",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,buy-now/call-now/instant-purchase,,,,,,,,,,,,,,buy-now,left blanks
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,xxx,,,,,,,,,,,,,,eg 331,integer value greater than or equal to 1
+,,,,provider,TRUE,string,Unique Identifier of the provider,citibank,,,,,,,,xxx,,,,,,,,,,,,,,eg 4,integer value greater than or equal to 1
+,,,,productCategory,TRUE,string,Unique Identifier of the product category,best-credit-cards,,,,,,,,xxx,,,,,,,,,,,,,,N/A,integer value greater than or equal to 1
+,,,,listPosition,TRUE,string,The position of the product in the list when the user had clicked to apply. This property only applies when the user is interacting with the button on the listing page,"1, 2, 3, 4",,,,,,,,context.listPosition,,,,,,,,,,,,,,eg 1,integer value greater than or equal to 1
+,,,,isSponsored,TRUE,string,Flag to indicate whether the product is a sponsored product or not,"true, false",,,,,,,,,,,,,,,,,,,,,,Yes,"true,false"
+,,,,isRecommended,TRUE,string,Flag to indicate whether the product is a recommended product by Moneysmart,"true, false",,,,,,,,,,,,,,,,,,,,,,N/A,"true,false"
+,,,,isPaid,TRUE,string,"Flag to indicate whether the product is a paid product or not. In the legacy system, it is referred to as ""has partnerships""","true, false",,,,,,,,FALSE,,,,,,,,,,,,,,N/A,"true,false"
+,,,,pageReferrer,TRUE,string,The page that the user was previously on before he landed on the current page,,,,,,,,,,,,,,,,,,,,,,,Yes,ignored here because segment itself tracks referral link according to Heng Gek
+,,,,pagePath,TRUE,string,The path of the current page that the user is on,/credit-cards/citibank?utm_source=GDN&utm_medium=cpc&utm_campaign=GDN%20%7C%20Credit%20Cards%20%7C%20Brand%20%7C%20Citi&gclid=EAIaIQobChMIjYKGlsHB6AIV1JK9Ch168wTYEAEYASAAEgIy9_D_BwE,,,,,,,,/car-insurance/wizard,,,,,,,,,,,,,,Yes,ignored here because segment itself tracks pagepath according to Heng Gek
+,,,,additionalParameters,FALSE,string/json,json value of additional parameters that dev/PM may want to pass and trackx,"{
+coverage : 40000,
+original_price : 20,
+discounted_price: 17.50
+}",,,,,,,,,,,,,,,,,,,,,,N/A,
+,,,,product,TRUE,string,Slug of product,citi-premiermiles-card,,,,,,,,,,,,,,,,,,,,,,,
+,,,,provider,TRUE,string,slug of provider,citibank,,,,,,,,,,,,,,,,,,,,,,,
+,,,,productCategory,TRUE,string,slug of product category,best-credit-cards,,,,,,,,,,,,,,,,,,,,,,,
+,,,,affiliateCategory,FALSE,string,Category of page that widget is part of,"credit-cards,dining,life-style",,,,,,,,,,,,,,,,,,,,,,N/A,"credit-cards,dining,shopping,personal-loans"
+,,,,affiliatePageType,FALSE,string,Type of page where widget is placed,"home-page,category-listing,category-details",,,,,,,,,,,,,,,,,,,,,,N/A,"blog-post-page,category-page"
+,,,,affiliateLocation,FALSE,string,Location of widget on page,,,,,,,,,,,,,,,,,,,,,,,N/A,"top,middle,bottom"
+,,,,affiliateWidgetType,FALSE,string,Type of the widget,"smart-widget,inline-widget,sidebar-widget",,,,,,,,,,,,,,,,,,,,,,,
+,,,,source,FALSE,string,Source of the event,blog-widget,,,,,,,,,,,,,,,,,,,,,,N/A,blog.moneysmart.sg
+,,,,sourceId,FALSE,string,Id of the source,"123(WidgetId, incase of widget)",,,,,,,,,,,,,,,,,,,,,,N/A,integer value greater than or equal to 1
+2,LeadGeneration.FormStepCompleted,Tracks when a user completes a step in a form,,pagePath,TRUE,string,The path of the current page that the user is on and the modal was displayed,/credit-cards,Application process,"forms/personal-loan/dbs-personal-loan/form?provider_slug=dbs
+
+forms/personal-loan/posb-personal-loan/form?provider_slug=posb",forms/credit-cards/standard-chartered-spree-credit-card/form?provider_slug=scb,forms/personal-loan/scb-cashone/form?provider_slug=scb,/credit-cards/ocbc-365-credit-card,/car-insurance/fwd/driver-details,/car-insurance/etiqa/driver-details,/car-insurance/wizard,,,,,,,,,,,,,,N/A,
+,,,,channel,TRUE,string,Product channel. If applicable to the page.,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,personal-loan,credit-cards,personal-loan,credit-cards,car-insurance,car-insurance,car-insurance,,,,,,,,,,,,,,,
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,id,id,id,xxx,xxx,xxx,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,id,id,id,xxx,xxx,xxx,,,,,,,,,,,,,,,,
+,,,,formStep,TRUE,string,Indicates which step of the form submission the user has completed,"step-1, step-2, step-3, ...",,step-1,step-1,step-1,"step-1, step-2","step-1, step-2","step-1, step-2","step-1, step-2",,,,,,,,,,,,,,,
+,,,,formName,TRUE,string,Name of the form. Should be unique in entire application,"credit-card-application, ",,"personal-loan-application, ","credit-card-application, ","personal-loan-application, ","credit-card-application, ",fwd-ci-application,etiqa-ci-application,car-insurance-wizard,,,,,,,,,,,,,,,
+,,,,status,FALSE,string,Whether submission was successful or not,"true, false",,"true, false","true, false","true, false",TRUE,"true, false","true, false",,,,,,,,,,,,,,,,
+,,,,error,FALSE,string,Pass error list,,,(Not applicable),(Not applicable),(Not applicable),(no need to send for now),(no need to send for now),(no need to send for now),,,,,,,,,,,,,,,,
+,,,,formDetails,FALSE,string/json,key/value pair of form details,"{first_name:abc, last_name:def, etc..}",,(Not applicable),(Not applicable),(Not applicable),(no need to send for now),(no need to send for now),(no need to send for now),,,,,,,,,,,,,,,,
+,,,,source,FALSE,string,Source of the event,blog-widget,,,,,,,,,,,,,,,,,,,,,,,
+,,,,sourceId,FALSE,string,Id of the source,"123(WidgetId, incase of widget)",,,,,,,,,,,,,,,,,,,,,,,
+3,LeadGeneration.FormSubmitted,Tracks when a user submits a form successfully.,,channel,TRUE,string,Product channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",Application process,personal-loan,credit-cards,personal-loan,credit-cards,car-insurance,car-insurance,,home-loan,home-loan,home-loan,refinancing,home-loan,home-loan,home-loan,home-loan,home-loan,home-loan,,,,N/A,
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,"personal-loan-application, ","credit-card-application, ","personal-loan-application, ",ocbc-credit-card-application,fwd-ci-application,etiqa-ci-application,,tdsr-calculator,property-tax-calculator,stamp-duty-calculator,refinance-calculator,msr-calculator,instalment-payment-calculator,progressive-payment-calculator,property-valuation-calculator,hk-mortgage-calculator,hk-property-valuation-calculator,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,id,id,id,xxx,xxx,xxx,,,,,,,,,,,,,,,,
+,,,,formName,TRUE,string,Name of the form. Should be unique in entire application,"credit-card-application, ",,"personal-loan-application, ","credit-card-application, ","personal-loan-application, ","credit-card-application, ",fwd-ci-application,etiqa-ci-application,car-insurance-wizard,,,,,,,,,,,,,,,
+,,,,provider,TRUE,string,"Id of the product provider. Optional, only applies to forms for single products",,,id,id,id,xxx,xxx,xxx,,,,,,,,,,,,,,,,
+,,,,formDetails,FALSE,string/json,key/value pair of form details,"{first_name:abc, last_name:def, etc..}",,(not Applicable),(not Applicable),(not Applicable),,(no need to send for now),(no need to send for now),,"{
+    ""property"": ""condo"",
+    ""total_applicant"": 2,
+    ""age"": [21,37],
+    ""citizenship"": [""Singaporean"",""PR""],
+    ""properties_owned"": [0,1],
+    ""current_home_loans"": [0,1],
+    ""fixed_monthly_income"": [10000,50000],
+    ""variable_monthly_income"": [1000,5000],
+    ""cash_available"": [100000,500000],
+    ""cpf_available"": [300000,800000],
+    ""credit_cards_min_payment"": [0, 500],
+    ""home_loans"": [0,5000],
+    ""car_loans"": [0,1000],
+    ""other_commitments"": [0,0],
+    ""max_property_price"":854933.78,
+    ""max_loan_amount"":641200.33
+}","{
+    ""annual_value"": 100000,
+    ""begin_date"": 2019-01-01,
+    ""end_date"": 2019-12-31,
+    ""property_type"": ""hdb"",
+    ""occupancy_status"": ""owner_occupied""
+}","{
+    ""purchase_price"": 500000,
+    ""purchase_type"": ""single"",
+    ""property_type"": ""hdb"",
+    ""stage_of_construction"": ""completed"",
+    ""properties_owned"": 0,
+    ""citizenship"": ""Singaporean""
+}","{
+    ""remaining_loan_amount"": 500000,
+    ""current_loan_term"": 15,
+    ""new_loan_term"": 15,
+    ""current_interest_rate"": 2.7,
+    ""new_interest_rate"": 1.9
+}","{
+    ""purchase_type"": ""with_spouse"",
+    ""fixed_monthly_income"": 10000,
+    ""variable_annual_income"": 1000,
+    ""joint_fixed_monthly_income"": 5000,
+    ""joint_variable_annual_income"": 500
+}","{
+    ""loan_amount"": 351000,
+    ""interest_rate"": 1.9,
+    ""loan_tenure"": 15
+}","{
+    ""purchase_price"": 531000,
+    ""loan_amount"": 191000,
+    ""cpf_amount"": 35000,
+    ""interest_rate"": 1.9,
+    ""loan_tenure"": 15
+}","{
+    ""address"": ""339_clementi_avenue_5_clementi"",
+    ""block"": """",
+    ""floor"": 1,
+    ""unit"": 1,
+    ""flat_type"": ""3_room"",
+    ""floor_area"": 990
+}","{
+    ""property_value"": 5000000,
+    ""loan amount"": 3500000,
+    ""premium_payment_option"": ""single_financed"",
+    ""loan_tenor"": 30,
+    ""bank"": ""other"",
+    ""p_rate"": 5.375,
+    ""p_minus"": 3,
+    ""first_property"": true,
+    ""self_use"": true,
+    ""income_HK"": true,
+    ""outstanding_mortgage"": false
+}","{
+    ""region"": ""Hong Kong"",
+    ""district"": ""Central & Western"",
+    ""building"": ""31 Robinson Road"",
+    ""floor"": 41,
+    ""flat"": ""A""
+}",,,,,
+,,,,source,FALSE,string,Source of the event,blog-widget,,,,,,,,,,,,,,,,,,,,,,,
+,,,,sourceId,FALSE,string,Id of the source,"123(WidgetId, incase of widget)",,,,,,,,,,,,,,,,,,,,,,,
+4,LeadGeneration.PaymentCompleted,Tracks when a user finish the payment,,channel,TRUE,string,Product channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,car-insurance,car-insurance,,,,,,,,,,,,,,,N/A,
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,formName,TRUE,string,Name of the form. Should be unique in entire application,"credit-card-application, ",,,,,,fwd-ci-application,etiqa-ci-application,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,product,TRUE,string,"Unique ID of the product. Optional, only applicable to forms for single products",,,,,,,xxx,xxx,,,,,,,,,,,,,,,,
+,,,,provider,TRUE,string,"Id of the product provider. Optional, only applies to forms for single products",,,,,,,xxx,xxx,,,,,,,,,,,,,,,,
+,,,,status,FALSE,string,It would indicate whether the payment was succesful or not,"success, fail",,,,,,"success, fail","success, fail",,,,,,,,,,,,,,,,
+5,LeadGeneration.ThankYou,Tracks when a user is shown a Thank you page,,channel,TRUE,string,Product channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,personal-loan,credit-cards,personal-loan,,,,,,,,,,,,,,,,,,N/A,
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,"personal-loan-application, ","credit-card-application, ","personal-loan-application, ",,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,id,id,id,,,,,,,,,,,,,,,,,,,
+6,LeadGeneration.RedirectCompleted,"Tracks when visitors click on Apply now, they are 
+sent to the interstitial page, and  are successfully 
+redirected to the provider’s website.",SAME AS LeadGeneration.ClickConversion,,,,,,Application process,,,,,,,,,,,,,,,,,,,,,"Yes, interstitial page",Check above
+7,UserEngagement.ShowedMoreDetails,Tracks the click events on the slider that reveals more summary details about the product ,More Details,channel,TRUE,string,Product channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,"N/A
+Current card does not have more details for TI",N.A
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page,lps",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,product,TRUE,string,Slug of product,citi-premiermiles-card,,,,,,,,,,,,,,,,,,,,,,,
+,,,,productCategory,TRUE,string,Unique Identifier/slug of the product category,best-credit-cards,,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,provider,TRUE,string,slug of the provider.,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,listPosition,TRUE,string,The position of the product in the list when the user had clicked to apply. This property only applies when the user is interacting with the button on the listing page,"1, 2, 3, 4",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,isSponsored,TRUE,string,Flag to indicate whether the product is a sponsored product or not,"true, false",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,isRecommended,TRUE,string,Flag to indicate whether the product is a recommended product by Moneysmart,"true, false",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,isPaid,TRUE,string,"Flag to indicate whether the product is a paid product or not. In the legacy system, it is referred to as ""has partnerships""","true, false",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,pageReferrer,TRUE,string,The page that the user was previously on before he landed on the current page,https://www.moneysmart.sg/credit-cards,,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,pagePath,TRUE,string,The path of the current page that the user is on,/credit-cards/citibank-cash-back,,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,affiliateCategory,FALSE,string,Category of page that widget is part of,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,affiliatePageType,FALSE,string,Type of page where widget is placed,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,affiliateLocation,FALSE,string,Location of widget on page,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,affiliateWidgetType,FALSE,string,Type of the widget,"smart-widget,inline-widget,sidebar-widget",,,,,,,,,,,,,,,,,,,,,,,
+,,,,source,FALSE,string,Source of the event,"blog-widget,shop",,,,,,,,,,,,,,,,,,,,,,,
+,,,,sourceId,FALSE,string,Id of the source,"123(WidgetId, incase of widget)",,,,,,,,,,,,,,,,,,,,,,,
+,,,,objectClicked,FALSE,string,Indicates which element was clicked to trigger the event.,"more-details,disclosure-widget",,,,,,,,,,,,,,,,,,,,,,,N.A
+8,UserEngagement.ViewedMoreDetails,Tracks click events that navigates the visitor to the details page of the product .Also clicks See all plan details  from more details drop down area  ,,channel,TRUE,string,Product channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",Listing and details page,,,,,,,,,,,,,,,,,,,,,travel-insurance,"credit-cards,personal-loan,travel-insurance"
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page,lps",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,eg 331,integer value greater than or equal to 1
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,eg 4,integer value greater than or equal to 1
+,,,,product,TRUE,string,Slug of product,citi-premiermiles-card,,,,,,,,,,,,,,,,,,,,,,,
+,,,,productCategory,TRUE,string,Unique Identifier/slug of the product category,best-credit-cards,,,,,,,,,,,,,,,,,,,,,,N/A,integer value greater than or equal to 1
+,,,,provider,TRUE,string,"Id of the product provider. Optional, only applies to forms for single products",,,,,,,,,,,,,,,,,,,,,,,,
+,,,,listPosition,TRUE,string,The position of the product in the list when the user had clicked to apply. This property only applies when the user is interacting with the button on the listing page,"1, 2, 3, 4",,,,,,,,,,,,,,,,,,,,,,Yes,integer value greater than or equal to 1
+,,,,isSponsored,TRUE,string,Flag to indicate whether the product is a sponsored product or not,"true, false",,,,,,,,,,,,,,,,,,,,,,Yes,"true,false"
+,,,,isRecommended,TRUE,string,Flag to indicate whether the product is a recommended product by Moneysmart,"true, false",,,,,,,,,,,,,,,,,,,,,,N/A,"true,false"
+,,,,isPaid,TRUE,string,"Flag to indicate whether the product is a paid product or not. In the legacy system, it is referred to as ""has partnerships""","true, false",,,,,,,,,,,,,,,,,,,,,,N/A,"true,false"
+,,,,objectClicked,TRUE,string,"Indicates which HTML element was clicked to trigger the event. The value for this property should be set in the ""Name"" attribute of the HTML element.  
+
+Eg. <a name=""some-text-link"">some text</a>
+
+This property only applies if there are multiple ways for a user to trigger this action","title-link, logo-link, details-page-link, get-more-details-link, read-more,see-all-plan-details",,,,,,,,,,,,,,,,,,,,,,get-more-details-link,pre-defined by data team according to Heng Gek
+,,,,pageReferrer,TRUE,string,The page that the user was previously on before he landed on the current page,https://www.moneysmart.sg/credit-cards,,,,,,,,,,,,,,,,,,,,,,Yes,ignored here because segment itself tracks referral link according to Heng Gek
+,,,,pagePath,TRUE,string,The path of the current page that the user is on,/credit-cards/citibank-cash-back,,,,,,,,,,,,,,,,,,,,,,Yes,ignored here because segment itself tracks pagepath according to Heng Gek
+,,,,affiliateCategory,FALSE,string,Category of page that widget is part of,,,,,,,,,,,,,,,,,,,,,,,N/A,"credit-cards,dining,shopping,personal-loans"
+,,,,affiliatePageType,FALSE,string,Type of page where widget is placed,,,,,,,,,,,,,,,,,,,,,,,N/A,"blog-post-page,category-page"
+,,,,affiliateLocation,FALSE,string,Location of widget on page,,,,,,,,,,,,,,,,,,,,,,,N/A,"top,middle,bottom"
+,,,,affiliateWidgetType,FALSE,string,Type of the widget,"smart-widget,inline-widget,sidebar-widget",,,,,,,,,,,,,,,,,,,,,,,
+,,,,source,FALSE,string,Source of the event,"blog-widget,shop",,,,,,,,,,,,,,,,,,,,,,N/A,blog.moneysmart.sg
+,,,,sourceId,FALSE,string,Id of the source,"123(WidgetId, incase of widget)",,,,,,,,,,,,,,,,,,,,,,N/A,integer value greater than or equal to 1
+9,UserEngagement.SortedList,Tracks the click events on the sort table header in the listing page,SortBy,sortFieldName,TRUE,string,Name of the field that the user is trying to sort,"price,medical-coverage,loss/damage-of-baggage,trip-cancellation,rate,
+processing-fee,monthly-installments, rate-type, lock-in-period,avg-interest-rate, 
+bank, minimum-interest-rate,maximum-interest-rate, rating,interest-difference, recommended",Listing and details page,,,,,,,,,,,,,,,,,,,,,"medical-coverage, loss/damage-of-baggage, trip-cancellation, price",N.A
+,,,,sortOrder,TRUE,string,The order which the user is sorting the results,"asc, desc",,,,,,,,,,,,,,,,,,,,,,"asc, desc",N.A
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,channel,TRUE,string,Product Channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,travel-insurance,N.A
+10,UserEngagement.UsedHelpHints,Tracks when a user interacts with a help hint on the site,Tooltip,hintType,TRUE,string,Type of help hint. Values declared here are taken from the icon names,"question-circle, i-circle, how-to-claim",,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+,,,,hintName,TRUE,string,name of the hint user read,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,channel,TRUE,string,Product channel. If applicable to the page,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,interactionType,TRUE,string,Method of interaction,"click, hover",,,,,,,,,,,,,,,,,,,,,,,N.A
+11,UserEngagement.ClickedMenuItem,Tracks when a user clicks a menu item,,menuName,TRUE,string,Name of the menu that the link is in,"main-menu, footer-menu, centre-page-menu",Listing page,,,,,,,,,,,,,,,,,,,,,"Don't have, should we?",N.A
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,menuItemName,TRUE,string,Name of the menu item that was clicked,"Loans, Home Loan Refinancing, Student Credit Cards",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,targetPath,FALSE,string,Target page path of the menu link,"/travel-insurance, /credit-cards etc",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,targetChannel,FALSE,string,Target product channel of the menu link if applicable,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,,N.A
+12,UserEngagement.QuestionAnswered,Tracks when a user answers a question in a form,,channel,TRUE,string,Product channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,formName,TRUE,string,Name of the form. Should be unique in entire application,"credit-card-application, ",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,questionNumber,FALSE,string,Question number on the form that was answered,"1, 2, 3, 4",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,questionAnswer,FALSE,string,Answer of the question,,,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,productId,FALSE,string,"Unique ID of the product. Optional, only applicable to forms for single products","123, 864, 345",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,providerId,FALSE,string,"Unique ID of the provider. Optional, only applicable to forms with providers","123, 864, 345",,,,,,,,,,,,,,,,,,,,,,,N.A
+13,UserEngagement.ShowMoreFilter,Tracks when a user clicks on show more on filter pane,,channel,TRUE,string,,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog","Listing page 
+Details page?",,,,,,,,,,,,,,,,,,,,,N/A,N.A
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,filterType,TRUE,string,,"category, provider",,,,,,,,,,,,,,,,,,,,,,,N.A
+14,UserEngagement.ShowMoreOptions,"Tracks when a user clicks on show more at
+the end of listing page",,channel,TRUE,string,,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,sequence,FALSE,string,,"1,2,3",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,providerId,FALSE,string,"Unique ID of the product. Optional, only applicable to forms for single products","123, 864, 345",,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,productCategoryId,FALSE,string,"Unique ID of the provider. Optional, only applicable to forms with providers","123, 864, 345",,,,,,,,,,,,,,,,,,,,,,,N.A
+15,UserEngagement.ClickedFilter,Tracks when a user clicks on filter option from category/feature/provider/rate filters,"- ShowResults
+- Calculate My Results
+- Selecting category/provider
+   on credit-card channel",channel,TRUE,string,,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,car-insurance,,,,,,,,,,,,,,travel-insurance,"credit-cards,personal-loan,travel-insurance"
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,filterType,TRUE,string,type of filter,"rate-filter,category-filter,provider-filter,feature-filter,etc..",,,,,,,,,,,,,,,,,,,,,,,
+,,,,filters,TRUE,string/JSON,Filter details. when possible else text,"Example-1: {
+        ""loan_amount"": ""string"",
+        ""loan_tenure"": ""string"",
+        ""citizenship_status"": ""string"",
+        ""monthly_income"": ""string""
+} Example-2:{
+        ""destination"": [""string"", ""string""],
+        ""trip_type"": ""string"",
+        ""trip_start_date"": ""string"",
+        ""trip_end_date"": ""string"",
+        ""number_of_adults"": ""integer"",
+        ""number_of_kids"": ""integer""
+} Example-3: {
+	""coverage_period"": ""string"",
+	""work_permit_type"": ""string"",
+	""plan_start_date"": ""string""
+}",,,,,,,,"{
+name: fwd
+cover: [""Authorised"", ""NCD Protector""]
+}",,,,,,,,,,,,,,"type
+location
+start_date
+end_date
+adults
+children
+insurer","all shop categories, all shop provider filter options"
+,,,,filterStep,FALSE,string,Indicates which step/page user has filtered,"step-1, step-2, step-3, ...",,,,,,,,,,,,,,,,,,,,,,N/A,"step-1,step-2"
+,,,,affiliateCategory,FALSE,string,Category of page that widget is part of,,,,,,,,,,,,,,,,,,,,,,,N/A,"credit-cards,dining,shopping,personal-loans"
+,,,,affiliatePageType,FALSE,string,Type of page where widget is placed,,,,,,,,,,,,,,,,,,,,,,,N/A,"blog-post-page,category-page"
+,,,,affiliateLocation,FALSE,string,Location of widget on page,,,,,,,,,,,,,,,,,,,,,,,N/A,"top,middle,bottom"
+,,,,affiliateWidgetType,FALSE,string,Type of the widget,"smart-widget,inline-widget,sidebar-widget",,,,,,,,,,,,,,,,,,,,,,,
+,,,,source,FALSE,string,Source of the event,"blog-widget, shop",,,,,,,,,,,,,,,,,,,,,,N/A,blog.moneysmart.sg
+,,,,sourceId,FALSE,string,Id of the source,"123(WidgetId, incase of widget)",,,,,,,,,,,,,,,,,,,,,,N/A,integer value greater than or equal to 1
+16,UserEngagement.ResetFilter,tracks when user clicks reset button/link,,channel,TRUE,string,,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,,
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,filterType,TRUE,string,type of filter,"rate-filter,category-filter,provider-filter,feature-filter,etc..",,,,,,,,,,,,,,,,,,,,,,,
+17,UserEngagement.Search,tracks when user clicks search icon from searchbox ,search icon on blog,searchKeyword,TRUE,string,word/text searched by user ,"credit, money,travel,..",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+18,UserEngagement.SearchResult,tracks response of filter requested by user,search button/cliking radio button on provider left side/selecting category from top/selecting features from left side,channel,TRUE,string,name of the channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,,
+,,,,pageType,TRUE,string,user landed page type,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,searchResponse,TRUE,string/JSON,search response ,"{ ""number_of_products"": ""10"",
+        ""product_slugs"": [""productslug1"",""productslug2""]
+ }",,,,,,,,,,,,,,,,,,,,,,,
+19,UserEngagement.ListingProductImpression,To track items visible in screen on listing page/search reasult page,scrol on product list,channel, TRUE,string,name of the channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,,
+,,,,pageType,TRUE,string,user landed page type,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,productName,FALSE,string,name of the product,Citi PremierMiles Visa Card,,,,,,,,,,,,,,,,,,,,,,,
+,,,,product,TRUE,string,product slug value,citi-premiermiles-card,,,,,,,,,,,,,,,,,,,,,,,
+,,,,provider,TRUE,string,provider slug value,citibank,,,,,,,,,,,,,,,,,,,,,,,
+,,,,productCategory,TRUE,string,product category slug value,air-miles,,,,,,,,,,,,,,,,,,,,,,,
+,,,,listPosition,TRUE,string,The position of the product in the list when the user had clicked to apply. This property only applies when the user is interacting with the button on the listing page,"1, 2, 3, 4",,,,,,,,,,,,,,,,,,,,,,,
+,,,,isSponsored,TRUE,string,Flag to indicate whether the product is a sponsored product or not,"true, false",,,,,,,,,,,,,,,,,,,,,,,
+,,,,isRecommended,TRUE,string,Flag to indicate whether the product is a recommended product by Moneysmart,"true, false",,,,,,,,,,,,,,,,,,,,,,,
+,,,,isPaid,TRUE,string,"Flag to indicate whether the product is a paid product or not. In the legacy system, it is referred to as ""has partnerships""","true, false",,,,,,,,,,,,,,,,,,,,,,,
+,,,,pageReferrer,TRUE,string,The page that the user was previously on before he landed on the current page,https://www.moneysmart.sg/credit-cards,,,,,,,,,,,,,,,,,,,,,,,
+,,,,pagePath,TRUE,string,The path of the current page that the user is on,/credit-cards/air-miles,,,,,,,,,,,,,,,,,,,,,,,
+,,,,additionalParameters,FALSE,string/json,json value of additional parameters that dev/PM may want to pass and trackx,"{
+coverage : 40000,
+original_price : 20,
+discounted_price: 17.50
+}",,,,,,,,,,,,,,,,,,,,,,,
+22,UserEngagement.ButtonClick,"Tracks when a user clicks on buttons which is
+not conversion",moneysmart.sg/mortgage,channel,TRUE,string,Product channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,car-insurance,home-loan,home-loan,home-loan,refinancing,home-loan,home-loan,home-loan,home-loan,home-loan,home-loan,mortgage,home-loan,refinancing,N/A,N.A
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,product,TRUE,string,Id of Product,,,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,formName,TRUE,string,Name of the form. Should be unique in entire application,"credit-card-application, ",,,,,,,,car-insurance,tdsr-calculator,property-tax-calculator,stamp-duty-calculator,refinance-calculator,msr-calculator,instalment-payment-calculator,progressive-payment-calculator,property-valuation-calculator,hk-mortgage-calculator,hk-property-valuation-calculator,,,,,N.A
+,,,,eventType,TRUE,string,Type of conversion event,"new-purchase, refinancing, get-rates, get-started, get-quotes,see-all-calculators,receive-gift",,,,,,,,get-quotes,"get-rates, see-all-calculators","get-rates, see-all-calculators","get-rates, see-all-calculators","get-rates, see-all-calculators","get-rates, see-all-calculators","get-rates, see-all-calculators","get-rates, see-all-calculators","get-rates, see-all-calculators","get-rates, see-all-calculators","get-rates, see-all-calculators","new-purchase, refinancing","see-all-calculators, get-rates, get-quotes","see-all-calculators, get-rates, get-quotes",,N.A
+23,UserAuth.LoggedIn,Tracks the user login event,LogIn,loginMethod,TRUE,string,Method that the user had used to login,"facebook, google, native",,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,channel,TRUE,string,Product Channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,,N.A
+24,UserAuth.RegisteredAccount,Tracks the user registration event,Signup,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,channel,TRUE,string,Product Channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+25,UserAuth.LoggedOut,Tracks the user logout event,Logout/Signout,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,channel,TRUE,string,Product Channel,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+26,UserFeedback.ModalDisplayed,Tracks when the feedback modal is viewed by the user,,,,,,,,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+27,UserFeedback.MoodSubmitted,Tracks when the user selects and submits his/her mood rating,,moodRating,,string,Indicates the mood the user is in,"1, 2 or 3",,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+28,UserFeedback.FeedbackSubmitted,Tracks when the user submits his/her feedback,,feedback,,string,The feedback submitted by the user,,,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+29,UserFeedback.MoreFeedback,Tracks when a user indicates they want to submit additional feedback,,moreFeedback,,string,Indicates whether the user wanted to submit more feedback,"yes, no",,,,,,,,,,,,,,,,,,,,,,N/A,N.A
+30,ABTest.Conversion,,,experiment_id,,string,,MS-<id>,,,,,,,,,,,,,,,,,,,,,,,N.A
+,,,,experiment_value,,string,,"control,test",,,,,,,,,,,,,,,,,,,,,,,N.A
+31,UserView.WidgetLoad,Track the Load event for Widget on MS blogs,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,channel,TRUE,string,,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,affiliateCategory,TRUE,string,Category of page that widget is part of,,,,,,,,,,,,,,,,,,,,,,,N/A,"credit-cards,dining,shopping,personal-loans"
+,,,,affiliatePageType,TRUE,string,Type of page where widget is placed,,,,,,,,,,,,,,,,,,,,,,,,"blog-post-page,category-page"
+,,,,affiliateLocation,TRUE,string,Location of widget on page,,,,,,,,,,,,,,,,,,,,,,,,"top,middle,bottom"
+,,,,affiliateWidgetType,TRUE,string,Type of the widget,"smart-widget,inline-widget,sidebar-widget",,,,,,,,,,,,,,,,,,,,,,,
+,,,,source,TRUE,string,Source of the event,blog-widget,,,,,,,,,,,,,,,,,,,,,,,blog.moneysmart.sg
+,,,,sourceId,FALSE,string,Id of the source,"123(WidgetId, incase of widget)",,,,,,,,,,,,,,,,,,,,,,,integer value greater than or equal to 1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+This event is to capture email details from all channnels wherever user entering email address like forms/applications.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1,EmailCapture,sharing email details with centralized DataLake,,emailId,TRUE,string,Email id of the user,abc@gmail.com,,,,,,,,abc@gmail.com,,,,,,,,,,,,,,N/A,
+,,,,userName,TRUE,string,Name of user,ABC,,,,,,,,ABC,,,,,,,,,,,,,,,
+,,,,formType,TRUE,string,location of email capture on page,"sidebar,sign-up",,,,,,,,"register, driver-details",,,,,,,,,,,,,,,
+,,,,channel,TRUE,string,channel name,"home-loan,refinancing,home-equity-loan,renovation-loan,
+education-loan,car-loan,debt-consolidation-loan,personal-loan,
+car-insurance,home-insurance,mortgage-insurance,travel-insurance,
+life-insurance,personal-accident-insurance,health-insurance,
+maid-insurance,international-health,fixed-deposit,savings-account,
+credit-cards,tax-loan,lending-companies-loan,debt-consolidation-plan,banks-loan,blog",,,,,,,,car-insurance,,,,,,,,,,,,,,,
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+2,Reading,Tracks the page read depth,depth,status,TRUE,,"0,25,50,100",percentage value indicating the depth of reading,,,,,,,,,,,,,,,,,,,,,,,
+,,,,pageType,TRUE,string,Type of page user landed,"home-page,product-listing,product-details,blog-home-page, 
+blog-category-listing, blog-article-details, form-page, login-page,
+redirect-page, widgets, thank-you, interstitial-page",,,,,,,,,,,,,,,,,,,,,,,
+,,,,language,TRUE,string,Locale of the page,"en,zh-hk",,,,,,,,,,,,,,,,,,,,,,,
+,,,,country,TRUE,string,which market this events happened,"sg,hk,tw,ph,id",,,,,,,,,,,,,,,,,,,,,,,
+,,,,page_url,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,title,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,
